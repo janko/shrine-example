@@ -1,0 +1,43 @@
+<h1><%= @album.name %></h1>
+
+<div class="form-group">
+  <label>Select photos</label>
+  <input type="file" multiple name="file">
+</div>
+
+<form action="/album" method="post">
+  <ul class="list-unstyled">
+    <% @album.photos.each_with_index do |photo, idx| %>
+      <%= partial("photo", locals: {photo: photo, idx: idx}) %>
+    <% end %>
+  </ul>
+  <input type="submit" value="Save" class="btn btn-primary">
+</form>
+
+<script>
+  $(function() {
+    $('[type=file]').fileupload({
+      add: function(e, data) {
+        $.getJSON('/attachments/images/cache/presign', function(result) {
+          data.formData = result['fields'];
+          data.url = result['url'];
+          data.submit();
+        });
+      },
+      done: function(e, data) {
+        var image = {
+          id: data.formData.key.match(/\w+$/),
+          storage: 'cache',
+          metadata: {
+            size:      data.files[0].size,
+            filename:  data.files[0].name,
+            mime_type: data.files[0].type
+          }
+        }
+
+        $.ajax("/album/photos", {method: 'POST', data: {photo: {image: image}}})
+          .done(function(data) { $("ul").append(data) })
+      }
+    });
+  });
+</script>

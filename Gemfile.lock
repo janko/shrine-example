@@ -1,0 +1,87 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.3.8)
+    aws-sdk (2.1.18)
+      aws-sdk-resources (= 2.1.18)
+    aws-sdk-core (2.1.18)
+      jmespath (~> 1.0)
+    aws-sdk-resources (2.1.18)
+      aws-sdk-core (= 2.1.18)
+    celluloid (0.17.2)
+      celluloid-essentials
+      celluloid-extras
+      celluloid-fsm
+      celluloid-pool
+      celluloid-supervision
+      timers (>= 4.1.1)
+    celluloid-essentials (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-extras (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-fsm (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-pool (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-supervision (0.20.5)
+      timers (>= 4.1.1)
+    coderay (1.1.0)
+    connection_pool (2.2.0)
+    dotenv (2.0.2)
+    down (1.0.2)
+    fastimage (1.7.0)
+      addressable (~> 2.3, >= 2.3.5)
+    hitimes (1.2.3)
+    image_processing (0.2.3)
+    jmespath (1.0.2)
+      multi_json (~> 1.0)
+    json (1.8.3)
+    method_source (0.8.2)
+    mini_magick (4.3.5)
+    multi_json (1.11.2)
+    pg (0.18.3)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    puma (2.13.4)
+    rack (1.6.4)
+    redis (3.2.1)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
+    roda (2.6.0)
+      rack
+    sequel (4.26.0)
+    shrine (0.9.0)
+      down (>= 1.0.2)
+    sidekiq (3.5.1)
+      celluloid (~> 0.17.2)
+      connection_pool (~> 2.2, >= 2.2.0)
+      json (~> 1.0)
+      redis (~> 3.2, >= 3.2.1)
+      redis-namespace (~> 1.5, >= 1.5.2)
+    slop (3.6.0)
+    tilt (2.0.1)
+    timers (4.1.1)
+      hitimes
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  aws-sdk (~> 2.1)
+  dotenv
+  fastimage
+  image_processing (>= 0.2.3)
+  mini_magick (~> 4.3.5)
+  pg
+  pry
+  puma
+  roda
+  sequel
+  shrine
+  sidekiq
+  tilt
+
+BUNDLED WITH
+   1.10.6
