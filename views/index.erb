@@ -26,7 +26,7 @@
       },
       done: function(e, data) {
         var image = {
-          id: data.formData.key.match(/\w+$/),
+          id: data.formData.key.match(/\w+$/)[0],
           storage: 'cache',
           metadata: {
             size:      data.files[0].size,
@@ -35,7 +35,7 @@
           }
         }
 
-        $.ajax("/album/photos", {method: 'POST', data: {photo: {image: image}}})
+        $.ajax("/album/photos", {method: 'POST', data: {photo: {image: JSON.stringify(image)}}})
           .done(function(data) { $("ul").append(data) })
       }
     });
