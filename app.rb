@@ -53,7 +53,7 @@ end
 
 require "sequel"
 
-DB = Sequel.connect("postgres:///shrine-example")
+DB = Sequel.connect("sqlite://database.sqlite3")
 Sequel::Model.plugin :nested_attributes
 
 class Album < Sequel::Model
@@ -71,21 +71,15 @@ Album.first || Album.create(name: "My Album")
 # Background jobs #
 ###################
 
-require "sidekiq"
-
-Sidekiq.default_worker_options[:retry] = false
-
 class UploadJob
-  include Sidekiq::Worker
-  def perform(data)
-    Shrine::Attacher.promote(data)
+  def self.perform_async(data)
+    Thread.new { Shrine::Attacher.promote(data) }
   end
 end
 
 class DeleteJob
-  include Sidekiq::Worker
-  def perform(data)
-    Shrine::Attacher.delete(data)
+  def self.perform_async(data)
+    Thread.new { Shrine::Attacher.delete(data) }
   end
 end
 
@@ -119,7 +113,6 @@ class App < Roda
     end
 
     r.post "album/photos" do
-      p params
       photo = @album.add_photo(params[:photo])
       partial("photo", locals: {photo: photo, idx: @album.photos.count})
     end

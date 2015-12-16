@@ -13,7 +13,7 @@ gem "fastimage"
 
 # Database
 gem "sequel"
-gem "pg"
+gem "sqlite3"
 
 # App
 gem "roda"
@@ -21,5 +21,4 @@ gem "tilt"
 gem "puma"
 
 # Background
-gem "sidekiq"
 gem "pry"

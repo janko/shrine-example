@@ -21,17 +21,15 @@ To run the app you need to setup the following things:
 
   ```rb
   $ bundle install
-  $ gem install foreman
   ```
 
 * Have Postgres on your machine, and run
 
   ```sh
-  $ createdb shrine-example
-  $ sequel -m db/migrations postgres:///shrine-example
+  $ sequel -m db/migrations sqlite://database.sqlite3
   ```
 
-* Put your Amazon S3 credentials in `.env`
+* Put your Amazon S3 credentials in `.env` and [setup CORS].
 
   ```sh
   S3_ACCESS_KEY_ID="..."
@@ -40,12 +38,11 @@ To run the app you need to setup the following things:
   S3_BUCKET="..."
   ```
 
-* Install Redis and have it running (for Sidekiq)
-
 Once you have all of these things set up, you can run the app:
 
 ```sh
-$ foreman start
+$ bundle exec rackup
 ```
 
 [Shrine]: https://github.com/janko-m/shrine
+[setup CORS]: http://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html
