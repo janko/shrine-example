@@ -6,7 +6,7 @@ flow with [Shrine]. It allows the user to add or remove photos.
 Uploading:
 
 1. User selects one or more files
-2. They asynchronously upload directly to S3
+2. They asynchronously upload directly to S3 (with a progress bar)
 3. Photo records are created with (temporarily stored) images
 4. Background job starts processing and permanently storing images
 5. On finishing it updates the record with original image and its thumbnail
