@@ -23,7 +23,9 @@ Shrine.storages = {
 }
 
 Shrine.plugin :sequel
+Shrine.plugin :direct_upload, presign: true
 Shrine.plugin :backgrounding
+Shrine.plugin :logging
 
 Shrine::Attacher.promote { |data| UploadJob.perform_async(data) }
 Shrine::Attacher.delete { |data| DeleteJob.perform_async(data) }
@@ -33,10 +35,8 @@ class ImageUploader < Shrine
 
   plugin :determine_mime_type
   plugin :store_dimensions
-  plugin :direct_upload, presign: true, max_size: 20*1024*1024
   plugin :versions, names: [:original, :thumb]
   plugin :remove_attachment
-  plugin :logging
 
   def process(io, context)
     case context[:phase]
