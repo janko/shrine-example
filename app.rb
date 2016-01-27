@@ -71,15 +71,21 @@ Album.first || Album.create(name: "My Album")
 # Background jobs #
 ###################
 
+require "sucker_punch"
+
 class UploadJob
-  def self.perform_async(data)
-    Thread.new { Shrine::Attacher.promote(data) }
+  include SuckerPunch::Job
+
+  def perform(data)
+    Shrine::Attacher.promote(data)
   end
 end
 
 class DeleteJob
-  def self.perform_async(data)
-    Thread.new { Shrine::Attacher.delete(data) }
+  include SuckerPunch::Job
+
+  def perform(data)
+    Shrine::Attacher.delete(data)
   end
 end
 

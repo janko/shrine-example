@@ -21,4 +21,4 @@ gem "tilt"
 gem "puma"
 
 # Background
-gem "pry"
+gem "sucker_punch", "~> 2.0"
