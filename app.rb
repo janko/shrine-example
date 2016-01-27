@@ -98,7 +98,7 @@ class App < Roda
 
   route do |r|
     r.on "attachments/images" do
-      r.run ImageUploader.direct_endpoint
+      r.run ImageUploader::UploadEndpoint
     end
 
     @album = Album.first!
