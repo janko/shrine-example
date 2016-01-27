@@ -1,11 +1,29 @@
 # Shrine example
 
-This is an example app demonstrating how easy it is to complex file uploads
-using [Shrine]. It implements the perfect user experience™ (like Google's),
-and the underlying complexity is completely hidden away from the user.
+This an app for demonstrating how easy it is to implement complex file upload
+flow with [Shrine]. It allows the user to add or remove photos.
 
-The application allows the user to do multiple file uploads via AJAX, directly
-to S3, where additional processing and deleting is done in background jobs.
+Uploading:
+
+1. User selects one or more files
+2. They asynchronously upload directly to S3
+3. Photo records are created with (temporarily stored) images
+4. Background job starts processing and permanently storing images
+5. On finishing it updates the record with original image and its thumbnail
+
+Deleting:
+
+1. User marks photos for deletion and submits
+2. Deletion starts in background, and form submits instantly
+3. Background job finishes deleting
+
+This is generally the best user experience for file uploads, because everything
+is done asynchronously, the user doesn't have to wait for processing, and
+they're completely unaware of background jobs.
+
+It is also great peformance-wise, since your app doesn't have to accept file
+uploads (files are uploaded directly to S3), and it isn't blocked by
+processing, storing or deleting.
 
 ## Requirements
 
@@ -23,7 +41,7 @@ To run the app you need to setup the following things:
   $ bundle install
   ```
 
-* Have Postgres on your machine, and run
+* Have SQLite on your machine, and run
 
   ```sh
   $ sequel -m db/migrations sqlite://database.sqlite3
