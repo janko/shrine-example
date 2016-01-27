@@ -23,7 +23,7 @@ Shrine.storages = {
 }
 
 Shrine.plugin :sequel
-Shrine.plugin :background_helpers
+Shrine.plugin :backgrounding
 
 Shrine::Attacher.promote { |data| UploadJob.perform_async(data) }
 Shrine::Attacher.delete { |data| DeleteJob.perform_async(data) }
