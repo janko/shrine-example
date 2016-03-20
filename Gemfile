@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "shrine", "~> 1.2"
+gem "shrine", "~> 1.3"
 
 # Storage
 gem "aws-sdk", "~> 2.1"
@@ -18,7 +18,7 @@ gem "sqlite3"
 # App
 gem "roda"
 gem "tilt"
-gem "puma"
+gem "puma", "~> 3.1.1"
 
 # Background
 gem "sucker_punch", "~> 2.0"
