@@ -37,6 +37,7 @@ class ImageUploader < Shrine
   plugin :store_dimensions
   plugin :versions, names: [:original, :thumb]
   plugin :remove_attachment
+  plugin :pretty_location
 
   def process(io, context)
     case context[:phase]
