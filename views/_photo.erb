@@ -4,7 +4,6 @@
   <div style="display: inline-block">
     <img src="<%= photo.image_url(:thumb) %>" width=300 class="img-thumbnail"><br>
     <input type="hidden" name="<%= name %>[id]", value=<%= photo.id %>>
-    <input type="hidden" name="<%= name %>[image_data]" value='<%= photo.image_data %>'>
     <span class="pull-right">Remove photo: <input type="checkbox" name="<%= name %>[_delete]" value="true"></span>
   </div>
 </li>
