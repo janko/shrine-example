@@ -27,7 +27,7 @@ Shrine.plugin :direct_upload, presign: true
 Shrine.plugin :backgrounding
 Shrine.plugin :logging
 
-Shrine::Attacher.promote { |data| UploadJob.perform_async(data) }
+Shrine::Attacher.promote { |data| PromoteJob.perform_async(data) }
 Shrine::Attacher.delete { |data| DeleteJob.perform_async(data) }
 
 class ImageUploader < Shrine
@@ -74,7 +74,7 @@ Album.first || Album.create(name: "My Album")
 
 require "sucker_punch"
 
-class UploadJob
+class PromoteJob
   include SuckerPunch::Job
 
   def perform(data)
