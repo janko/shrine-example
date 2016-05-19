@@ -1,7 +1,8 @@
-# Shrine example
+# Shrine Roda example
 
-This an app for demonstrating how easy it is to implement complex file upload
-flow with [Shrine]. It allows the user to add or remove photos.
+This is a Roda & Sequel demo for [Shrine]. It demonstrates how easy it is to
+implement complex file upload flow with [Shrine]. It allows the user to add or
+remove photos.
 
 Uploading:
 

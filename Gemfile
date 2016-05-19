@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "shrine", "~> 1.3"
+gem "shrine", "~> 2.0"
 
 # Storage
 gem "aws-sdk", "~> 2.1"
