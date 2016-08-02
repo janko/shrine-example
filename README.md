@@ -1,3 +1,7 @@
+**This app has been moved to the [Shrine repository](https://github.com/janko-m/shrine/tree/master/demo).**
+
+-----
+
 # Shrine Roda example
 
 This is a Roda & Sequel demo for [Shrine]. It demonstrates how easy it is to
